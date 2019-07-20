@@ -1,7 +1,7 @@
 package com.elfoworks.models
 
-import com.elfoworks.models.players.PlayerInfo
+import com.elfoworks.models.players.PlayerResponse
 
 interface ApiResponse
 
-class GetAllPlayersResponse(val players: List<PlayerInfo>) : ApiResponse
+class GetAllPlayersResponse(val players: List<PlayerResponse>) : ApiResponse

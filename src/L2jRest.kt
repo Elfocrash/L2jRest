@@ -6,6 +6,7 @@ import io.ktor.application.install
 import io.ktor.features.ContentNegotiation
 import io.ktor.features.DefaultHeaders
 import io.ktor.gson.gson
+import io.ktor.http.HttpStatusCode
 import io.ktor.response.respond
 import io.ktor.routing.get
 import io.ktor.routing.routing
@@ -30,7 +31,11 @@ object L2jRestApi{
             routing { 
                 for(request in RequestMap.queryRequests) {
                     get("/api/${request.key}"){
-                        val response = request.value.createInstance().handle(call.request.queryParameters)
+                        val response = request.value.createInstance().handle(call.parameters)
+                        if(response == null) {
+                            call.respond(HttpStatusCode.NotFound)
+                            return@get
+                        }
                         call.respond(response)
                     }
                 }
