@@ -44,6 +44,7 @@ dependencies {
     implementation "org.koin:koin-core-ext:$koin_version"
     implementation "org.koin:koin-java:$koin_version"
     implementation "org.koin:koin-ktor:$koin_version"
+    implementation "org.reflections:reflections:0.9.11"
 }
 
 configurations {

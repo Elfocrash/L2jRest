@@ -1,8 +1,8 @@
 package com.elfoworks.handlers
 
-import com.elfoworks.models.ApiRequest
 import com.elfoworks.models.ApiResponse
+import io.ktor.http.Parameters
 
-interface CommandHandler<TRequest, TResponse> where TRequest : ApiRequest, TResponse : ApiResponse? {
-    fun handle(request: TRequest): TResponse
+interface CommandHandler<TResponse> where TResponse : ApiResponse? {
+    fun handle(parameters: Parameters, requestBody: String) : TResponse
 }
