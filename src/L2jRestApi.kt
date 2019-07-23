@@ -2,6 +2,7 @@ package com.elfoworks
 
 import com.elfoworks.annotations.Get
 import com.elfoworks.annotations.Post
+import com.elfoworks.features.ApiKeyAuthentication
 import com.elfoworks.handlers.CommandHandler
 import com.elfoworks.handlers.QueryHandler
 import com.elfoworks.ioc.iocModule
@@ -28,6 +29,10 @@ object L2jRestApi{
             
             install(ContentNegotiation){
                 gson{}
+            }
+            
+            install(ApiKeyAuthentication){
+                apiKey = "TestApiKey"
             }
             
             install(Koin){
